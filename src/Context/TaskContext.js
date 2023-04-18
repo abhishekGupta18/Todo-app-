@@ -18,7 +18,12 @@ export const TaskContextProvider = ({ children }) => {
     }
   };
 
-  const buttonHandler = (id) => {};
+  const buttonHandler = (id) => {
+    const updatedTask = [...task];
+    const changedValue = updatedTask.find((item) => item.id === id);
+    changedValue.isCompleted = !changedValue.isCompleted;
+    setTask(updatedTask);
+  };
   useEffect(() => {
     getData();
   }, []);
